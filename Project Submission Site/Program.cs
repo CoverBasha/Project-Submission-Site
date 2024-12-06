@@ -1,7 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using Project_Submission_Site.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<ApplicationContext>(options =>
+{
+    options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=ReusableProject;Trusted_Connection=True;TrustServerCertificate=True;");
+});
 
 var app = builder.Build();
 
