@@ -1,0 +1,263 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  --box-width: 924px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", serif;
+}
+body {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  /* background: linear-gradient(to bottom left, #f3f3f3, #3a424a); */  
+  background-color: #f8f8f8;
+}
+
+.box {
+  width: var(--box-width);
+  height: 600px;
+  display: flex;
+  background-image: url("~/images/alt1.jpg");
+  background-size: cover;
+  box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
+  position: relative;
+  transition: all 0.8s;
+  overflow: hidden;
+}
+
+.form-container {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  background-color: white;
+  padding: 5% 5.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.8s ease-in-out;
+  overflow: hidden;
+}
+
+.form-container h2 {
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+input:focus {
+  outline-color: black;
+}
+
+.form-container input[type="text"] {
+  margin-bottom: 15px;
+  padding: 8px 10px;
+  border: 1px solid #969ab8;
+  border-radius: 7px;
+}
+
+.form-container input[type="password"] {
+    margin-bottom: 15px;
+    padding: 8px 10px;
+    border: 1px solid #969ab8;
+    border-radius: 7px;
+}
+
+.form-container input::placeholder {
+  color: #969ab8;
+}
+
+.form-container .submit-button {
+  color: white;
+  background-color: black;
+  border: none;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 7px;
+}
+
+.blue-link {
+  align-self: self-end;
+  margin-top: 7px;
+  color: black;
+  font-weight: 600;
+  font-size: smaller;
+  text-decoration: none;
+}
+
+.form-container h5 {
+  display: flex;
+  color: #969ab8;
+  padding: 20px 0 20px;
+}
+.form-container h5 span {
+  padding: 0 12px;
+}
+.form-container h5::before,
+.form-container h5::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #969ab8;
+  margin: auto;
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 35px;
+  padding: 2px 36%;
+  background-color: white;
+  border: 1px solid #969ab8;
+  border-radius: 7px;
+  color: #171725;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.icon {
+  height: 70%;
+}
+
+.form-container h6 {
+  font-weight: 400;
+  color: #969ab8;
+}
+
+h6 a {
+  margin: 0;
+  font-size: 12px;
+  text-decoration: none;
+  color: black;
+  padding-left: 5px;
+  font-weight: 600;
+}
+
+.form-container h4{
+    font-weight: 400;
+    color:#969ab8;
+}
+
+.radio-section {
+  height: 50px;
+  margin: 1px 0 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2px;
+}
+
+.radio-container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+  border-radius: 8px;
+  box-sizing: border-box;
+  padding: 10px;
+  position: relative;
+}
+
+input[type="radio"]:checked{
+    accent-color: black;
+}
+
+input[type="radio"]:checked + label {
+  border-color: black;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+.radio-container label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #969ab8;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.radio-container label:hover {
+  border-color: #969ab8;
+}
+
+.radio-container span {
+  width: 100%;
+  padding: 0 30px;
+}
+
+.sign-in {
+  z-index: 2;
+}
+
+.box.active .sign-in {
+  transform: translateX(100%);
+}
+
+.sign-up {
+  z-index: 1;
+  opacity: 0;
+  animation: move 0.6s ease-in-out;
+
+}
+
+.box.active .sign-up {
+  transform: translateX(100%);
+  opacity: 1;
+  z-index: 5;
+}
+
+@keyframes move {
+  0%,
+  49.99% {
+    opacity: 0;
+    z-index: 1;
+  }
+  50%,
+  100% {
+    opacity: 1;
+    z-index: 5;
+  }
+}
+
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 56.5%;
+  padding: 10% 7%;
+  color: #3a424a;
+  transition: all 0.5s ease-in-out;
+}
+
+.active.box .right{
+    transform: translateX(-100%);
+}
+
+.shadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+}
