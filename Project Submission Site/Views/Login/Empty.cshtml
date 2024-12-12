@@ -1,0 +1,77 @@
+﻿@model Account
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="~/css/Login.css" />
+</head>
+
+<body>
+	<div class="box active" id="my-container">
+		<div class="shadow"></div>
+
+		<div class="form-container sign-in">
+			@using (Html.BeginForm("Login", "Login"))
+			{
+				<h2>Log In</h2>
+
+				<input type="text" placeholder="Your Email" />
+				<input type="password" placeholder="Password" />
+
+				<input type="submit" value="Log In" class="submit-button" asp-action="Login"/>
+				<a href="" class="blue-link">Forgot password?</a>
+				<h5><span>or</span></h5>
+
+				<button class="google-button">
+					<img src="~/images/google.svg" alt="google icon" class="icon" />
+					<h4>Google</h4>
+				</button>
+
+				<h6>Don't have an account? <a href="#" id="register">Sign Up</a></h6>
+			}
+		</div>
+		<div class="form-container sign-up">
+			<form action="">
+				<h2>Sign Up</h2>
+
+				<h4>Register as</h4>
+				<div class="radio-section">
+					<div class="radio-container">
+						<input type="radio"
+							   id="personChoice1"
+							   name="person-type"
+							   value="user"
+							   checked />
+						<label for="personChoice1"><span>User</span></label>
+					</div>
+
+					<div class="radio-container">
+						<input type="radio"
+							   id="personChoice2"
+							   name="person-type"
+							   value="referee" />
+						<label for="personChoice2"><span>Referee</span></label>
+					</div>
+				</div>
+
+				<input type="text" placeholder="Your Email" />
+				<input type="text" placeholder="Username" />
+				<input type="password" placeholder="Password" />
+				<input type="password" placeholder="Repeat password" />
+
+				<input type="submit" value="Sign Up" class="submit-button" />
+
+				<h5><span>or</span></h5>
+
+				<button class="google-button">
+					<img src="~/images/google.svg" alt="google icon" class="icon" />
+					<h4>Google</h4>
+				</button>
+
+				<h6>Already have an account? <a href="#" id="login">Log in</a></h6>
+			</form>
+		</div>
+		<div class="right">
+		</div>
+	</div>
+
+	<script src="~/js/Login.js"></script>
+</body>

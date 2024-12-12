@@ -3,16 +3,16 @@ using Project_Submission_Site.Models;
 
 namespace Project_Submission_Site.Controllers
 {
-    public class ProjectsController : Controller
+    public class LoginController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Empty()
         {
             return View();
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Login()
         {
-            return View();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
