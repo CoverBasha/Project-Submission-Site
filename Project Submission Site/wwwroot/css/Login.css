@@ -22,7 +22,7 @@ body {
   width: var(--box-width);
   height: 600px;
   display: flex;
-  background-image: url("~/images/alt1.jpg");
+  background-image: url("../images/alt1.jpg");
   background-size: cover;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
   position: relative;
@@ -37,7 +37,7 @@ body {
   left: 0;
   width: 50%;
   background-color: white;
-  padding: 5% 5.5%;
+  padding: 4% 5.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -62,11 +62,13 @@ input:focus {
   outline-color: black;
 }
 
-.form-container input[type="text"] {
-  margin-bottom: 15px;
-  padding: 8px 10px;
-  border: 1px solid #969ab8;
-  border-radius: 7px;
+.form-container input[type="text"],
+.form-container input[type="password"],
+.form-container input[type="email"] {
+    margin-bottom: 15px;
+    padding: 8px 10px;
+    border: 1px solid #969ab8;
+    border-radius: 7px;
 }
 
 .form-container input[type="password"] {
