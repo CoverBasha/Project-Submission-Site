@@ -1,4 +1,4 @@
-﻿@model Account
+﻿@model LoginSignUpViewModel
 <head>
 	<title>Login</title>
 	<link rel="stylesheet" href="~/css/Login.css" />
@@ -13,10 +13,10 @@
 			{
 				<h2>Log In</h2>
 
-				<input type="text" placeholder="Your Email" />
-				<input type="password" placeholder="Password" />
+				<input type="text" placeholder="Your Email" asp-for=Email />
+				<input type="password" placeholder="Password" asp-for=Password />
 
-				<input type="submit" value="Log In" class="submit-button" asp-action="Login"/>
+				<input type="submit" value="Log In" class="submit-button" asp-action="Login" />
 				<a href="" class="blue-link">Forgot password?</a>
 				<h5><span>or</span></h5>
 
@@ -29,33 +29,34 @@
 			}
 		</div>
 		<div class="form-container sign-up">
-			<form action="">
+			@using (Html.BeginForm("SignUp", "Login"))
+			{
 				<h2>Sign Up</h2>
 
 				<h4>Register as</h4>
 				<div class="radio-section">
 					<div class="radio-container">
 						<input type="radio"
-							   id="personChoice1"
-							   name="person-type"
-							   value="user"
-							   checked />
+						   asp-for=Type
+						   id="personChoice1"
+						   value="user"
+						   checked />
 						<label for="personChoice1"><span>User</span></label>
 					</div>
 
 					<div class="radio-container">
 						<input type="radio"
-							   id="personChoice2"
-							   name="person-type"
-							   value="referee" />
+						   asp-for=Type
+						   id="personChoice2"
+						   value="referee" />
 						<label for="personChoice2"><span>Referee</span></label>
 					</div>
 				</div>
 
-				<input type="text" placeholder="Your Email" />
-				<input type="text" placeholder="Username" />
-				<input type="password" placeholder="Password" />
-				<input type="password" placeholder="Repeat password" />
+				<input type="text" placeholder="Your Email" asp-for=Email />
+				<input type="text" placeholder="Username" asp-for=Username />
+				<input type="password" placeholder="Password" asp-for=Password />
+				<input type="password" placeholder="Repeat password" asp-for=Repeat />
 
 				<input type="submit" value="Sign Up" class="submit-button" />
 
@@ -67,7 +68,7 @@
 				</button>
 
 				<h6>Already have an account? <a href="#" id="login">Log in</a></h6>
-			</form>
+			}
 		</div>
 		<div class="right">
 		</div>

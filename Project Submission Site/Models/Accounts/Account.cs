@@ -1,6 +1,6 @@
 ﻿namespace Project_Submission_Site.Models
 {
-    public interface Account
+    public class Account
     {
         public int Id { get; set; }
         public string Email { get; set; } 

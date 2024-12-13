@@ -15,8 +15,10 @@ namespace Project_Submission_Site.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(Account account)
         {
+            if (account is User)
+                Account = account;
             return View();
         }
 

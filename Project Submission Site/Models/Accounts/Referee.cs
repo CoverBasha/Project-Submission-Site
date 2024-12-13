@@ -2,15 +2,16 @@
 {
     public class Referee : Account
     {
+        /*
         public int Id { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
+        */
         public List<Project> Pending { get; set; }
-        public Referee(string username, string password)
+        public Referee()
         {
-            Username = username;
-            Password = password;
+            Pending = new List<Project>();
         }
     }
 }
