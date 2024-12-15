@@ -19,14 +19,21 @@ namespace Project_Submission_Site.Controllers
 
         [HttpPost]
         public ActionResult Login(LoginSignUpViewModel viewModel)
-        {   
+        {
             Account account = _context.Admins.SingleOrDefault(a => a.Email == viewModel.Email && a.Password == viewModel.Password);
             if (account == null)
                 account = _context.Referees.SingleOrDefault(a => a.Email == viewModel.Email && a.Password == viewModel.Password);
             if (account == null)
                 account = _context.Users.SingleOrDefault(a => a.Email == viewModel.Email && a.Password == viewModel.Password);
 
-            return account == null ? RedirectToAction("Empty") : RedirectToAction("Index", "Home", account);
+            if (account is User)
+                return RedirectToAction("Home", "UserHome", (User)account);
+            if (account is Referee)
+                return RedirectToAction("Home", "RefereeHome", (Referee)account);
+            if (account is Admin)
+                return RedirectToAction("Home", "AdminHome", (Admin)account);
+
+            return RedirectToAction("Empty");
 
         }
 

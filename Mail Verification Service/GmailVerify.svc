@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Mail_Verification_Service.GmailVerify" CodeBehind="GmailVerify.svc.cs" %>

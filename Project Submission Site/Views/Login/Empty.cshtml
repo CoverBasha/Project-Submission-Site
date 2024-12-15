@@ -5,7 +5,7 @@
 </head>
 
 <body>
-	<div class="box active" id="my-container">
+	<div class="box" id="my-container">
 		<div class="shadow"></div>
 
 		<div class="form-container sign-in">
@@ -13,7 +13,7 @@
 			{
 				<h2>Log In</h2>
 
-				<input type="text" placeholder="Your Email" asp-for=Email />
+				<input type="email" placeholder="Your Email" asp-for=Email />
 				<input type="password" placeholder="Password" asp-for=Password />
 
 				<input type="submit" value="Log In" class="submit-button" asp-action="Login" />
@@ -53,7 +53,7 @@
 					</div>
 				</div>
 
-				<input type="text" placeholder="Your Email" asp-for=Email />
+				<input type="email" placeholder="Your Email" asp-for=Email />
 				<input type="text" placeholder="Username" asp-for=Username />
 				<input type="password" placeholder="Password" asp-for=Password />
 				<input type="password" placeholder="Repeat password" asp-for=Repeat />
