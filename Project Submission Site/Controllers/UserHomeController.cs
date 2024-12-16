@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Project_Submission_Site.Models;
 using Project_Submission_Site.ViewModels;
 using VerificationService;
@@ -21,7 +22,7 @@ namespace Project_Submission_Site.Controllers
 			Account? account = null;
 
 			if (userid != null && userid > 0)
-				account = _context.Users.FirstOrDefault(x => x.Id == userid.Value);
+				account = _context.Users.Where(x => x.Id == userid.Value).Include(x => x.Projects).FirstOrDefault();
 
 			if (account == null)
 				return RedirectToAction("Empty", "Login");
@@ -34,7 +35,6 @@ namespace Project_Submission_Site.Controllers
 			{
 				Username = account.Username,
 				Submitted = ((User)account).Projects.Where(p => p.Status == Status.Pending).ToList()
-
 			};
 
 			return View(viewModel);

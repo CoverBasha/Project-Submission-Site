@@ -8,10 +8,10 @@
         public string Email { get; set; }
         public string Password { get; set; }
         */
-        public List<Project> Pending { get; set; }
+        public List<Project> Projects { get; set; }
         public Referee()
         {
-            Pending = new List<Project>();
+            Projects = new List<Project>();
         }
     }
 }
