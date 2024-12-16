@@ -17,10 +17,8 @@
 					<li class="nav-item"><a href="projects.html" class="nav-link text-white">Projects</a></li>
 				</ul>
 
-				<button type="button" class="btn btn-primary  me-2" asp-action="Profile">Profile</button>
-				<a asp-action="Logout" class="btn btn-outline-primary me-2 d-flex align-items-center" role="button">
-					Log out
-				</a>
+          <button type="button" class="btn btn-primary  me-2">Profile</button>
+                <a class="btn btn-outline-primary me-2 d-flex align-items-center" role="button" asp-controller="UserHome" asp-action="Logout">Log out</a>
 
 			</header>
 		</div>

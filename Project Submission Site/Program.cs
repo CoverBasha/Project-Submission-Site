@@ -8,8 +8,14 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
-    options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=ReusableProject;Trusted_Connection=True;TrustServerCertificate=True;");
+    options.UseSqlServer("Server=.\\SQLSERVER;Database=ReusableProject;Trusted_Connection=True;TrustServerCertificate=True;");
 });
+
+// Add sessions
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
+builder.Services.AddSession(options =>
+			options.IdleTimeout = TimeSpan.FromHours(24));
 
 var app = builder.Build();
 
@@ -27,6 +33,8 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
+
+app.UseSession();
 
 app.MapControllerRoute(
     name: "default",

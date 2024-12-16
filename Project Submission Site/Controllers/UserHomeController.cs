@@ -1,38 +1,44 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project_Submission_Site.Models;
+using VerificationService;
 
 namespace Project_Submission_Site.Controllers
 {
     public class UserHomeController : Controller
     {
-        ApplicationContext _context;
-        User current;
+		ApplicationContext _context;
 
-        public UserHomeController(ApplicationContext context)
-        {
-            _context = context;
-        }
-        public IActionResult Home(User user)
-        {
-            current = user;
-            return View(current);
-        }
+		public UserHomeController(ApplicationContext context)
+		{
+			_context = context;
+		}
 
-        public IActionResult Projects()
+		[HttpGet]
+		public IActionResult Home()
         {
-            var projects = _context.Projects.Where(p => p.Status == 0).ToList();
-            return View(projects);
-        }
+            int? userid = HttpContext.Session.GetInt32("UserId");
+			Account? account = null;
 
-        public IActionResult Profile()
-        {
-            return View(current);
-        }
+			if (userid != null && userid > 0)
+				account = _context.Users.FirstOrDefault(x => x.Id == userid.Value);
 
-        public IActionResult Logout()
-        {
-            current = null;
-            return RedirectToAction("Empty", "Login");
-        }
-    }
+			if (account == null)
+				return RedirectToAction("Empty", "Login");
+			else if (!account.Verified)
+			{
+				ViewBag.VerifyEmail = account.Email;
+				return View("../Login/Empty");
+			}
+			return View(account);
+		}
+
+		[HttpGet]
+		public IActionResult Logout()
+		{
+			int? userid = HttpContext.Session.GetInt32("UserId");
+			if (userid != null && userid > 0)
+				HttpContext.Session.Remove("UserId");
+			return RedirectToAction("Empty", "Login");
+		}
+	}
 }
