@@ -12,13 +12,20 @@
 					<span class="fs-3 fw-semibold text-white">Project Submission Site</span>
 				</a>
 
+<<<<<<< HEAD
 				<ul class="nav nav-pills me-auto">
 					<li class="nav-item"><a href="#" class="nav-link active " aria-current="page">Home</a></li>
 					<li class="nav-item"><a href="projects.html" class="nav-link text-white">Projects</a></li>
 				</ul>
+=======
+		  <button type="button" class="btn btn-primary  me-2">Profile</button>
+				<a class="btn btn-outline-primary me-2 d-flex align-items-center" role="button" asp-controller="UserHome" asp-action="Logout">Log out</a>
+>>>>>>> 214f3e5110a2c71b24bc3ef765b1a9ee8c3c18da
 
-          <button type="button" class="btn btn-primary  me-2">Profile</button>
-                <a class="btn btn-outline-primary me-2 d-flex align-items-center" role="button" asp-controller="UserHome" asp-action="Logout">Log out</a>
+				<button type="button" class="btn btn-primary  me-2" asp-action="Profile">Profile</button>
+				<a asp-action="Logout" class="btn btn-outline-primary me-2 d-flex align-items-center" role="button">
+					Log out
+				</a>
 
 			</header>
 		</div>
