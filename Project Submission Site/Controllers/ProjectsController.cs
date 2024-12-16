@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project_Submission_Site.Models;
+using ServiceProvider.Helpers;
 
 namespace Project_Submission_Site.Controllers
 {
@@ -19,7 +20,9 @@ namespace Project_Submission_Site.Controllers
 
         public ActionResult Details(int id)
         {
-            return View();
+            var project = _context.Projects.SingleOrDefault(p => p.Id == id);
+
+            return View(project);
         }
     }
 }

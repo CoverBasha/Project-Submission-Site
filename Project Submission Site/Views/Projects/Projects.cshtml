@@ -29,20 +29,25 @@
 			@foreach (var project in Model)
 			{
 				<div class="project-card" id="id-1">
-					<a class="card-heading mb-1" asp-action="Details">
+					
+					@*<a class="card-heading mb-1" asp-action="Details">
 						@project.Name
-					</a>
+					</a>*@
+
+					@Html.ActionLink(@project.Name,"Details",new{id = project.Id},new{ @Class="card-heading mb-1"})
 					<div class="card-deadline mb-2 ">
 						@project.Deadline.ToString("MMMM dd, yyyy")
 					</div>
+
 					@*<div class="card-description mb-3">
 						One of the most commonly-misunderstood operators is Modulo (%). In this tutorial, we'll unpack exactly what this little bugger does, and learn how it can help us solve practical problems.
 						<a class="card-link" href="#">
-							Continue reading
-							<img src="images/arrow-right-solid.svg" alt="right arrow" class="arrow-right">
+						Continue reading
+						<img src="images/arrow-right-solid.svg" alt="right arrow" class="arrow-right">
 						</a>
-					</div>
+						</div>
 					*@
+
 					<div class="card-duration-budget mb-1">
 						<div class="card-budget"><span class="text-primary fw-semibold pe-2">Budget:</span>$@project.Budget</div>
 						<div class="card-duration"><span class="text-primary fw-semibold px-2">Duration:</span>@project.Deadline days</div>

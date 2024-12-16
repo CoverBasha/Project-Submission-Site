@@ -1,0 +1,56 @@
+
+
+.project-card{
+    height: 230px;
+    width: 65%;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: 0px 15px 15px 0.17px rgba(0, 0, 0, 0.1);
+    display:flex;
+    flex-direction: column;
+    padding: 10px 25px;
+
+}
+
+.card-heading{
+    color:#212529;
+    text-decoration: none;
+    font-weight:500;
+    font-size: 1.6rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-heading:hover{
+    color:var(--primary);
+}
+
+.card-deadline{
+    color:#969ab8;
+
+}
+
+.card-description{
+    font-size: 1.1rem;
+}
+
+.card-link{
+    color:#212529;
+    text-decoration-color:var(--primary);
+    text-decoration-thickness: 2px;
+    font-weight:600;
+}
+
+.arrow-right{
+    height:10px;
+    transition:all 0.2s ease-in-out;
+}
+
+.card-link:hover .arrow-right{
+    transform: translateX(50%);
+}
+
+.card-duration-budget{
+    display:flex;
+    justify-content: flex-end;
+    font-weight:500;
+}

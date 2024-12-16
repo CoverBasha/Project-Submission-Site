@@ -1,11 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project_Submission_Site.Models;
+using Project_Submission_Site.ViewModels;
 using VerificationService;
 
 namespace Project_Submission_Site.Controllers
 {
-    public class UserHomeController : Controller
-    {
+	public class UserHomeController : Controller
+	{
 		ApplicationContext _context;
 
 		public UserHomeController(ApplicationContext context)
@@ -15,8 +16,8 @@ namespace Project_Submission_Site.Controllers
 
 		[HttpGet]
 		public IActionResult Home()
-        {
-            int? userid = HttpContext.Session.GetInt32("UserId");
+		{
+			int? userid = HttpContext.Session.GetInt32("UserId");
 			Account? account = null;
 
 			if (userid != null && userid > 0)
@@ -29,7 +30,14 @@ namespace Project_Submission_Site.Controllers
 				ViewBag.VerifyEmail = account.Email;
 				return View("../Login/Empty");
 			}
-			return View(account);
+			var viewModel = new UserHomeViewModel()
+			{
+				Username = account.Username,
+				Submitted = ((User)account).Projects.Where(p => p.Status == Status.Pending).ToList()
+
+			};
+
+			return View(viewModel);
 		}
 
 		[HttpGet]

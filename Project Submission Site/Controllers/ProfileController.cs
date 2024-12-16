@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Project_Submission_Site.Models;
+using ServiceProvider.Helpers;
 
 namespace Project_Submission_Site.Controllers
 {
@@ -10,10 +11,10 @@ namespace Project_Submission_Site.Controllers
         {
             _context = context;
         }
-        public IActionResult Index()
+        public IActionResult Details()
 		{
-
-			return View();
+			var user = SessionHelper.GetSession(this, _context);
+			return View(user);
 		}
 	}
 }
