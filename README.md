@@ -28,4 +28,4 @@
  3. Database: Microsoft SQL Server : to store project themes, user information, referee information, and project submissions.
 
 
-## Overall, The system should provide a user-friendly interface for researchers to submit their projects, allow for efficient review by experts, and facilitate communication and collaboration between all parties involved.
+### Overall, The system should provide a user-friendly interface for researchers to submit their projects, allow for efficient review by experts, and facilitate communication and collaboration between all parties involved.
