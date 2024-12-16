@@ -1,0 +1,175 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root{
+    --primary: #0d6efd;
+    --referee: #26B893;
+}
+
+body{
+    font-family: "Poppins", serif;
+    position:relative;
+    background-color: rgb(238, 238, 238);
+    padding-top: 82px;
+
+}
+
+.project-card{
+    height: 230px;
+    width: 65%;
+    border-radius: 7px;
+    background-color: white;
+    box-shadow: 0px 15px 15px 0.17px rgba(0, 0, 0, 0.1);
+    display:flex;
+    flex-direction: column;
+    padding: 10px 25px;
+
+}
+
+.card-heading{
+    color:#212529;
+    text-decoration: none;
+    font-weight:500;
+    font-size: 1.6rem;
+    transition: all 0.2s ease-in-out;
+}
+
+.card-heading:hover{
+    color:var(--primary);
+}
+
+.card-deadline{
+    color:#969ab8;
+
+}
+
+.card-description{
+    font-size: 1.1rem;
+}
+
+.card-link{
+    color:#212529;
+    text-decoration-color:var(--primary);
+    text-decoration-thickness: 2px;
+    font-weight:600;
+}
+
+.arrow-right{
+    height:10px;
+    transition:all 0.2s ease-in-out;
+}
+
+.card-link:hover .arrow-right{
+    transform: translateX(50%);
+}
+
+.card-duration-budget{
+    display:flex;
+    justify-content: space-between;
+    font-weight:500;
+
+}
+
+/* -----------------------------------------         PROFILE        ---------------------------------------------------- */
+
+.profile-background{
+    width: 100%;
+    height: 150px;
+    background-image: url(images/profile-background-black.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.profile-user-card{
+    width:100%;
+    height: 170px;
+    position:relative;
+    bottom: 45px;
+    display:flex;
+    justify-content: center;
+    padding: 0 130px;
+    gap: 20px;
+    /* height:600px; */
+    /* background-color: rgba(0, 0, 0, 0.05); */
+    /* margin-bottom: 30px; */
+    display:none;
+}
+
+.user-card-icon{
+    height: 80%;
+    background-color: black;
+    /* border: 5px solid #212529; */
+    border-radius:50%;
+    /* display:none; */
+}
+
+.user-card-text{
+    width: 31%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.user-card-text > h3{
+    font-weight: 600;
+}
+
+.profile-form{
+    width: 70%;
+    height:600px;
+    margin:auto;
+    margin-top: -40px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color:white;
+    box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    padding: 40px 20px 70px 20px;
+}
+
+.profile-form-content{
+    padding: 0 30px;
+}
+
+.profile-form > h3{
+    color:#212529;
+    margin-bottom: 50px;
+}
+
+.profile-form > h6{
+    font-weight:400;
+    color:#969ab8;
+}
+
+.profile-form input[type="text"],
+.profile-form input[type="email"],
+.profile-form input[type="password"]
+{
+    margin-bottom: 15px;
+    padding: 8px 10px;
+    border: 1px solid #969ab8;
+    border-radius: 7px;
+}
+
+.new-password{
+    width:100%;
+    display:flex;
+    gap:5px;
+}
+
+.new-password input{
+    width:50%;
+}
+
+.profile-form .submit-button {
+    color: white;
+    /* background-color: black; */
+    border: none;
+    cursor: pointer;
+    padding: 15px 10px;
+    border-radius: 7px;
+    width:50%;
+    margin:auto;
+    margin-top: 30px;
+  }
+  
