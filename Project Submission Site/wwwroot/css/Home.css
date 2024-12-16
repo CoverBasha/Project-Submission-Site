@@ -43,3 +43,9 @@
     height:100%;
 }
 
+.proposal-card a {
+    display: inline-block;
+    vertical-align: middle;
+    width: 150px;
+    line-height: 60px;
+}

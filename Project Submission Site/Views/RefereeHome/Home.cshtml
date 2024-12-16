@@ -29,7 +29,7 @@
 	</div>
 
 	<section class="home-section container mt-5" id="home-section">
-		<h2>Your submitted proposals</h2>
+		<h2>Pending proposals</h2>
 
 		<br />
 		<div class="home-container pb-4">
@@ -37,9 +37,11 @@
 			@foreach (var project in Model.Submitted)
 			{
 				<div class="proposal-card ">
-					<h3 style="width: 60%;">@project.Name</h3>
+					<h3 style="width: 50%;">@project.Name</h3>
 
-					<button class="btn btn-success" asp-action="View" asp-route-id="@project.Id">View</button>
+					<a class="btn btn-success" asp-action="Approve" asp-route-id="@project.Id">Approve</a>
+					<a class="btn btn-danger" asp-action="Decline" asp-route-id="@project.Id">Decline</a>
+					<a class="btn btn-danger" asp-action="RequestMod" asp-route-id="@project.Id">Request Modification</a>
 				</div>
 				<br />
 			}
