@@ -5,9 +5,16 @@ namespace Project_Submission_Site.Controllers
 {
     public class ProjectsController : Controller
     {
-        public IActionResult Index()
+        ApplicationContext _context;
+        public ProjectsController(ApplicationContext context)
         {
-            return View();
+            _context = context;
+
+        }
+        public IActionResult Projects()
+        {
+            var projects = _context.Projects.ToList();
+            return View(projects);
         }
 
         public ActionResult Details(int id)

@@ -5,27 +5,23 @@
 	<link rel="stylesheet" href="~/css/Home.css">
 </head>
 <body>
-	<div class="fixed-top bg-dark mb-4">
+	<div class="fixed-top bg-black mb-4">
 		<div class="container">
 			<header class="d-flex flex-wrap justify-content-center py-3 pt-4">
-				<a href="/" class="d-flex align-items-center mb-3 mb-md-0 link-body-emphasis text-decoration-none me-auto">
-					<span class="fs-3 fw-semibold text-white">Project Submission Site</span>
+				<a class="d-flex align-items-center mb-3 mb-md-0 link-body-emphasis text-decoration-none me-auto" asp-action="Home" asp-controller="UserHome">
+					<span class="fs-3 fw-semibold text-white">ReviewPoint</span>
 				</a>
 
 				<ul class="nav nav-pills me-auto">
-					<li class="nav-item"><a href="#" class="nav-link active " aria-current="page">Home</a></li>
-					<li class="nav-item"><a href="projects.html" class="nav-link text-white">Projects</a></li>
+					<li class="nav-item"><a class="nav-link text-white" aria-current="page" asp-action="Home" asp-controller="UserHome">Home</a></li>
+					<li class="nav-item"><a class="nav-link text-black bg-white" asp-action="Projects" asp-controller="Projects">Projects</a></li>
 				</ul>
 
-				<button type="button" class="btn btn-primary  me-2" asp-action="Profile">Profile</button>
-				<a asp-action="Logout" class="btn btn-outline-primary me-2 d-flex align-items-center" role="button">
-					Log out
-				</a>
-
+				<a class="btn btn-light me-2 d-flex align-items-center" role="button" asp-action="Profile">Profile</a>
+				<a class="btn btn-outline-light me-2 d-flex align-items-center" role="button" asp-controller="UserHome" asp-action="Logout">Log out</a>
 			</header>
 		</div>
 	</div>
-
 
 	<section class="project-section" id="project-section">
 		<div class="container p-4 d-flex flex-column align-items-center gap-4 px-4">
