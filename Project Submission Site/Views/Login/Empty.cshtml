@@ -5,6 +5,37 @@
 </head>
 
 <body>
+	@if (ViewBag.VerifyEmail != null)
+	{
+		<div class="otp-popup">
+			<div class="shadow-background"></div>
+			<form class="otp-card" method="post" asp-controller="Login" asp-action="PostVerify">
+				<img src="../images/Verification-Code-Cropped.png" alt="verification code" class="otp-img">
+				<h2>Enter verification code</h2>
+				<h4>We've sent code to: <span class="dark-color">@ViewBag.VerifyEmail</span></h4>
+				<input type="text" maxlength="4" name="code" id="otp-input" required autofocus>
+
+				<div asp-validation-summary="All" class="error-validation"></div>
+				<input type="submit" value="Confirm Code" id="otp-submit">
+			</form>
+		</div>
+	}
+	else
+	{
+		<div class="otp-popup hidden">
+			<div class="shadow-background"></div>
+			<form class="otp-card" method="post" asp-controller="Login" asp-action="PostVerify">
+				<img src="../images/Verification-Code-Cropped.png" alt="verification code" class="otp-img">
+				<h2>Enter verification code</h2>
+				<h4>We've sent code to: <span class="dark-color">user@mail.com</span></h4>
+				<input type="text" maxlength="4" name="code" id="otp-input" required autofocus>
+
+				<div asp-validation-summary="All" class="error-validation"></div>
+				<input type="submit" value="Confirm Code" id="otp-submit">
+			</form>
+		</div>
+	}
+
 	<div class="box" id="my-container">
 		<div class="shadow"></div>
 
@@ -25,7 +56,7 @@
 					<h4>Google</h4>
 				</button>
 
-				<h6>Don't have an account? <a href="#" id="register">Sign Up</a></h6>
+				<h6>Don't have an account? <span id="register">Sign Up</span></h6>
 			}
 		</div>
 		<div class="form-container sign-up">
@@ -67,7 +98,7 @@
 					<h4>Google</h4>
 				</button>
 
-				<h6>Already have an account? <a href="#" id="login">Log in</a></h6>
+				<h6>Already have an account? <span id="login">Log in</span></h6>
 			}
 		</div>
 		<div class="right">
