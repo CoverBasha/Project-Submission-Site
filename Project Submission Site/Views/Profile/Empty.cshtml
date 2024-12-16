@@ -17,14 +17,23 @@
                 </a>
 
                 <ul class="nav nav-pills me-auto">
-                    <li class="nav-item"><a href="home.html" class="nav-link text-white" aria-current="page">Home</a></li>
+                    @if (Model is User)
+                    {
+                        <li class="nav-item"><a class="nav-link text-black bg-white" aria-current="page" asp-action="Home" asp-controller="UserHome">Home</a></li>
+                    }
+                    else if (Model is Referee)
+                    {
+                        <li class="nav-item"><a class="nav-link text-black bg-white" aria-current="page" asp-action="Home" asp-controller="RefereeHome">Home</a></li>
+                    }
+                    else
+                    {
+                        <li class="nav-item"><a class="nav-link text-black bg-white" aria-current="page" asp-action="Home" asp-controller="AdminHome">Home</a></li>
+                    }
                     <li class="nav-item"><a href="projects.html" class="nav-link text-white">Projects</a></li>
                 </ul>
 
                 <a href="#" class="btn btn-light me-2 d-flex align-items-center" role="button"> Profile </a>
-                <a href="../SignUp - black/index.html" class="btn btn-outline-light me-2 d-flex align-items-center" role="button">
-                    Log out
-                </a>
+                <a class="btn btn-outline-light me-2 d-flex align-items-center" role="button" asp-controller="UserHome" asp-action="Logout">Log out</a>
 
             </header>
         </div>
@@ -34,15 +43,13 @@
         <div class="profile-background">
         </div>
         <div class="container profile-container">
-            <form class="profile-form" action="">
+            <form class="profile-form" method="post" asp-action="Update">
                 <h3>Edit Profile</h3>
 
-                <input type="hidden" placeholder="Id" asp-for="Id"/>
-
                 <h6>Username</h6>
-                <input type="text" placeholder="Username" asp-for="Username" />
+                <input type="text" placeholder="Username" asp-for="Username" required />
                 <h6>Email</h6>
-                <input type="email" placeholder="Email" asp-for="Email" />
+                <input type="email" placeholder="Email" asp-for="Email" required />
 
                 <h6>New Password</h6>
                 <div class="new-password">
@@ -50,8 +57,12 @@
                     <input type="password" placeholder="Repeat password" name="ConfirmPassword" />
                 </div>
 
-                <h6>Password Confirmation</h6>
-                <input type="password" placeholder="Confirm Password" name="Password" />
+                <h6>Current Password</h6>
+                <input type="password" placeholder="Confirm Password" name="Password" required />
+
+                <span asp-validation-for="Username" class="error-validation"></span>
+                <span asp-validation-for="Email" class="error-validation"></span>
+                <span asp-validation-for="Password" class="error-validation"></span>
 
                 <input type="submit" value="Save Changes" class="submit-button btn btn-dark bg-black" />
 

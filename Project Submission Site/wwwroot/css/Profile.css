@@ -24,7 +24,7 @@ body {
 
 .profile-form{
     width: 70%;
-    height:600px;
+    height: auto;
     margin:auto;
     margin-top: -40px;
     display:flex;
