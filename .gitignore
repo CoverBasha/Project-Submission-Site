@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /Project Submission Site/Program.cs
 /Project Submission Site/Views/SignUp
+/Project Submission Site/Properties/serviceDependencies.json
+/Project Submission Site/Properties/serviceDependencies.local.json
