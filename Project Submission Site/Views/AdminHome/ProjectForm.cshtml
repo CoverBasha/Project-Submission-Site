@@ -1,4 +1,4 @@
-﻿@model Project
+﻿@model ProjectViewModel
 
 <head>
 	<title>Project info</title>
@@ -12,16 +12,16 @@
 		<div class="container">
 			<header class="d-flex flex-wrap justify-content-center py-3 pt-4">
 				<a asp-action="Home" class="d-flex align-items-center mb-3 mb-md-0 link-body-emphasis text-decoration-none me-auto">
-					<span class="fs-3 fw-semibold text-white">Admin</span>
+					<span class="fs-3 fw-semibold text-white">@Model.UserName Basha</span>
 				</a>
 
 				<ul class="nav nav-pills me-auto">
 					<li class="nav-item"><a asp-action="Home" class="nav-link text-white" aria-current="page">Home</a></li>
-					<li class="nav-item"><a asp-action="Project" class="nav-link text-black bg-white">Create Theme</a></li>
+					<li class="nav-item"><a asp-action="ProjectForm" class="nav-link text-black bg-white">Create Theme</a></li>
 				</ul>
 
-				<a href="profile.html" class="btn btn-light me-2 d-flex align-items-center" role="button"> Profile </a>
-				<a href="../SignUp - black/index.html" class="btn btn-outline-light me-2 d-flex align-items-center" role="button">
+				<a asp-action="Empty" asp-controller="Profile" class="btn btn-light me-2 d-flex align-items-center" role="button"> Profile </a>
+				<a asp-action="Logout" class="btn btn-outline-light me-2 d-flex align-items-center" role="button">
 					Log out
 				</a>
 
@@ -30,7 +30,7 @@
 	</div>
 
 	<section class="theme-section container mt-5" id="theme-section">
-		@if (@Model==null)
+		@if (@Model.Project == null)
 		{
 			<h2 class="text-success fw-bold">Create Project Theme</h2>
 		}
@@ -39,26 +39,39 @@
 			<h2 class="text-success fw-bold">Edit Project Theme</h2>
 		}
 
-		@if (ViewBag.create)
+		@using (Html.BeginForm("Save", "AdminHome", FormMethod.Post, new { id = "theme-form" }))
 		{
-			@using (Html.BeginForm("Save", "AdminHome", FormMethod.Post, new { id = "theme-form" }))
+			<label for="title">Project Title:</label>
+			<input type="text" id="title" asp-for=Project.Name required>
+
+			<label for="budget">Project Budget:</label>
+			<input type="number" id="budget" asp-for=Project.Budget required>
+
+			<label for="duration">Project Duration (in days):</label>
+			<input type="number" id="duration" asp-for=Project.Duration required>
+
+			<label for="deadline">Deadline:</label>
+			<input type="date" id="deadline" asp-for=Project.Deadline required>
+
+			<label for="assign-referee">Assign Referee:</label>
+			<div class="referee-row">
+				@Html.DropDownListFor(m => m.RefereeId,
+			new SelectList(Model.Referees,"Id","Username"),"Select Referee", new{id="assign-referee", @class="w-75 mb-0"})
+			</div>
+
+			@Html.HiddenFor(p=>p.Project.Id)
+
+			@if (@Model.Project == null)
 			{
-				<label for="title">Project Title:</label>
-				<input type="text" id="title" asp-for=Name required>
+				<input type="submit" id="submit-theme" value="Create" class="btn btn-success">
+			}
+			else
+			{
+				<input type="submit" id="submit-theme" value="Update" class="btn btn-success">
 
-				<label for="budget">Project Budget:</label>
-				<input type="number" id="budget" asp-for=Budget required>
-
-				<label for="duration">Project Duration (in days):</label>
-				<input type="number" id="duration" asp-for=Duration required>
-
-				<label for="deadline">Deadline:</label>
-				<input type="date" id="deadline" asp-for=Deadline required>
-
-				@Html.HiddenFor(p=>p.Id)
-				<input type="submit" id="submit-theme" value="Create Theme" class="btn btn-success">
 			}
 		}
+
 
 
 	</section>

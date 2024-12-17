@@ -27,3 +27,12 @@ label {
     border: 1px solid #969ab8;
     border-radius: 7px;
 }
+
+.referee-row {
+    display: flex;
+    gap: 10px;
+}
+
+    .referee-row button {
+        width: 25%;
+    }

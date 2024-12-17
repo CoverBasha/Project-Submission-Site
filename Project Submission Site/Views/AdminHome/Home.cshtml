@@ -16,11 +16,11 @@
 
 				<ul class="nav nav-pills me-auto">
 					<li class="nav-item"><a asp-action="Home" class="nav-link text-white" aria-current="page">Home</a></li>
-					<li class="nav-item"><a asp-action="Project" class="nav-link text-black bg-white">Create Theme</a></li>
+					<li class="nav-item"><a asp-action="ProjectForm" class="nav-link text-black bg-white">Create Theme</a></li>
 				</ul>
 
-				<a href="profile.html" class="btn btn-light me-2 d-flex align-items-center" role="button"> Profile </a>
-				<a href="../SignUp - black/index.html" class="btn btn-outline-light me-2 d-flex align-items-center" role="button">
+				<a asp-action="Empty" asp-controller="Profile" class="btn btn-light me-2 d-flex align-items-center" role="button"> Profile </a>
+				<a asp-action="Logout" class="btn btn-outline-light me-2 d-flex align-items-center" role="button">
 					Log out
 				</a>
 
@@ -28,7 +28,17 @@
 		</div>
 	</div>
 
+	@foreach (var project in Model.Projects)
+	{
+		<div class="proposal-card ">
+			<h3 style="width: 60%;">@project.Name</h3>
 
+			<a class="btn btn-success" asp-action="Edit" asp-route-id="@project.Id">Edit</a>
+
+			<a class="btn btn-danger" asp-action="Delete" asp-route-id="@project.Id">Delete</a>
+		</div>
+		<br />
+	}
 
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 	<script src="~/js/index.js"></script>

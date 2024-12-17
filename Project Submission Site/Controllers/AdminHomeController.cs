@@ -43,27 +43,28 @@ namespace Project_Submission_Site.Controllers
 
         public IActionResult ProjectForm()
         {
-            return View();
+            var viewModel = new ProjectViewModel()
+            {
+                Referees = _context.Referees.ToList(),
+            };
+            return View(viewModel);
         }
 
         [HttpPost]
-        public IActionResult Save(Project project)
+        public IActionResult Save(ProjectViewModel viewModel)
         {
-            if (!ModelState.IsValid)
-                return View("ProjectForm", project);
-
-            if (project.Id == 0)
+            if (viewModel.Project.Id == 0)
             {
-                _context.Projects.Add(project);
+                _context.Projects.Add(viewModel.Project);
             }
             else
             {
-                var newProject = _context.Projects.Single(p => p.Id == project.Id);
+                var newProject = _context.Projects.Single(p => p.Id == viewModel.Project.Id);
 
-                newProject.Name = project.Name;
-                newProject.Budget = project.Budget;
-                newProject.Deadline = project.Deadline;
-                newProject.Duration = project.Duration;
+                newProject.Name = viewModel.Project.Name;
+                newProject.Budget = viewModel.Project.Budget;
+                newProject.Deadline = viewModel.Project.Deadline;
+                newProject.Duration = viewModel.Project.Duration;
                 newProject.Status = Status.Available;
             }
 
@@ -72,7 +73,7 @@ namespace Project_Submission_Site.Controllers
             return RedirectToAction("Home");
         }
 
-        [HttpPost]
+        [HttpGet]
         public IActionResult Edit(int id)
         {
             var project = _context.Projects.SingleOrDefault(x => x.Id == id);
@@ -80,13 +81,29 @@ namespace Project_Submission_Site.Controllers
             if (project == null)
                 return NotFound();
 
-            return View("CustomerForm", project);
+            var viewModel = new ProjectViewModel()
+            {
+                Project = project,
+                Referees = _context.Referees.ToList(),
+            };
+
+            return View("ProjectForm", viewModel);
         }
 
-        public IActionResult Projects()
+        public IActionResult Delete(int id)
         {
-            var projects = _context.Projects.ToList();
-            return View(projects);
+            _context.Remove(_context.Projects.Single(x => x.Id == id));
+            _context.SaveChanges();
+
+            return RedirectToAction("Home");
+        }
+
+        public IActionResult Logout()
+        {
+            int? userid = HttpContext.Session.GetInt32("UserId");
+            if (userid != null && userid > 0)
+                HttpContext.Session.Remove("UserId");
+            return RedirectToAction("Empty", "Login");
         }
     }
 }

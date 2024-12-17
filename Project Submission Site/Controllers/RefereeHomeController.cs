@@ -97,5 +97,13 @@ namespace Project_Submission_Site.Controllers
 			}
 			return RedirectToAction("Home");
 		}
+
+		public IActionResult Logout()
+		{
+			int? userid = HttpContext.Session.GetInt32("UserId");
+			if (userid != null && userid > 0)
+				HttpContext.Session.Remove("UserId");
+			return RedirectToAction("Empty", "Login");
+		}
 	}
 }
