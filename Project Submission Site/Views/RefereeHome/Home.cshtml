@@ -37,11 +37,11 @@
 			@foreach (var project in Model.Submitted)
 			{
 				<div class="proposal-card ">
-					<h3 style="width: 50%;">@project.Name</h3>
+					<h3 style="width: 40%;">@project.Name</h3>
 
 					<a class="btn btn-success" asp-action="Approve" asp-route-id="@project.Id">Approve</a>
 					<a class="btn btn-danger" asp-action="Decline" asp-route-id="@project.Id">Decline</a>
-					<a class="btn btn-danger" asp-action="RequestMod" asp-route-id="@project.Id">Request Modification</a>
+					<a class="btn btn-secondary" asp-action="Modify" asp-route-id="@project.Id">Request Modify</a>
 				</div>
 				<br />
 			}

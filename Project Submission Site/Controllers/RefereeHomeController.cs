@@ -5,8 +5,8 @@ using Project_Submission_Site.ViewModels;
 
 namespace Project_Submission_Site.Controllers
 {
-    public class RefereeHomeController : Controller
-    {
+	public class RefereeHomeController : Controller
+	{
 		ApplicationContext _context;
 
 		public RefereeHomeController(ApplicationContext context)
@@ -31,14 +31,14 @@ namespace Project_Submission_Site.Controllers
 				return View("../Login/Empty");
 			}
 
-            var viewModel = new UserHomeViewModel()
-            {
-                Username = account.Username,
-                Submitted = ((Referee)account).Projects.Where(p => p.Status == Status.Pending).ToList()
-            };
+			var viewModel = new UserHomeViewModel()
+			{
+				Username = account.Username,
+				Submitted = ((Referee)account).Projects.Where(p => p.Status == Status.Pending).ToList()
+			};
 
-            return View(viewModel);
-        }
+			return View(viewModel);
+		}
 
 		[HttpGet]
 		public IActionResult Approve(int id)
@@ -96,6 +96,12 @@ namespace Project_Submission_Site.Controllers
 				_context.SaveChanges();
 			}
 			return RedirectToAction("Home");
+		}
+
+		[HttpGet]
+		public IActionResult Modify()
+		{
+			return View();
 		}
 
 		public IActionResult Logout()
