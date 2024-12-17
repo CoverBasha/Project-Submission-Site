@@ -8,13 +8,13 @@
 	<div class="fixed-top bg-dark mb-4">
 		<div class="container">
 			<header class="d-flex flex-wrap justify-content-center py-3 pt-4">
-				<a href="/" class="d-flex align-items-center mb-3 mb-md-0 link-body-emphasis text-decoration-none me-auto">
+				<a asp-action="Home" class="d-flex align-items-center mb-3 mb-md-0 link-body-emphasis text-decoration-none me-auto">
 					<span class="fs-3 fw-semibold text-white">Project Submission Site</span>
 				</a>
 
 				<ul class="nav nav-pills me-auto">
-					<li class="nav-item"><a href="#" class="nav-link active " aria-current="page">Home</a></li>
-					<li class="nav-item"><a href="projects.html" class="nav-link text-white">Projects</a></li>
+					<li class="nav-item"><a asp-action="Home" class="nav-link active " aria-current="page">Home</a></li>
+					<li class="nav-item"><a asp-action="Projects" class="nav-link text-white">Projects</a></li>
 				</ul>
 
 				<button type="button" class="btn btn-primary  me-2" asp-action="Profile">Profile</button>
