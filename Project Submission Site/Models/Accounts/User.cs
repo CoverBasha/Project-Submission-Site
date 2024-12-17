@@ -8,11 +8,11 @@
         public string Email { get; set; }
         public string Password { get; set; }
         */
-        public Stack<Notification> Notifications { get; set; }
+        public List<Notification> Notifications { get; set; }
         public List<Project> Projects { get; set; }
         public User()
         {
-            Notifications = new Stack<Notification>();
+            Notifications = new List<Notification>();
             Projects = new List<Project>();
         }
     }

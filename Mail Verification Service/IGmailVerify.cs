@@ -14,5 +14,7 @@ namespace Mail_Verification_Service
         [OperationContract]
         string SendMail(string email,string username);
 
+        [OperationContract]
+        bool SendModificationNotify(string email, string username, string project, string desc);
     }
 }

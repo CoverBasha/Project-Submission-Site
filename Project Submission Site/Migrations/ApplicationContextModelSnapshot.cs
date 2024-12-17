@@ -51,7 +51,7 @@ namespace Project_Submission_Site.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Admins");
+                    b.ToTable("Admins", (string)null);
                 });
 
             modelBuilder.Entity("Project_Submission_Site.Models.Notification", b =>
@@ -81,7 +81,7 @@ namespace Project_Submission_Site.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Notification");
+                    b.ToTable("Notification", (string)null);
                 });
 
             modelBuilder.Entity("Project_Submission_Site.Models.Project", b =>
@@ -120,7 +120,7 @@ namespace Project_Submission_Site.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("Project_Submission_Site.Models.Referee", b =>
@@ -152,7 +152,7 @@ namespace Project_Submission_Site.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Referees");
+                    b.ToTable("Referees", (string)null);
                 });
 
             modelBuilder.Entity("Project_Submission_Site.Models.User", b =>
@@ -184,7 +184,7 @@ namespace Project_Submission_Site.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("Project_Submission_Site.Models.Notification", b =>
