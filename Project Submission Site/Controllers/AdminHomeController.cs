@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Project_Submission_Site.Models;
 using Project_Submission_Site.ViewModels;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using ServiceProvider.Helpers;
 
 namespace Project_Submission_Site.Controllers
 {
@@ -46,6 +47,7 @@ namespace Project_Submission_Site.Controllers
             var viewModel = new ProjectViewModel()
             {
                 Referees = _context.Referees.ToList(),
+                UserName = SessionHelper.GetSession(this, _context).Username,
             };
             return View(viewModel);
         }
@@ -85,6 +87,7 @@ namespace Project_Submission_Site.Controllers
             {
                 Project = project,
                 Referees = _context.Referees.ToList(),
+                UserName = SessionHelper.GetSession(this, _context).Username,
             };
 
             return View("ProjectForm", viewModel);
