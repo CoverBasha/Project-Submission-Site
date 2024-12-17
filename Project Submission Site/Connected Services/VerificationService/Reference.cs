@@ -11,7 +11,7 @@ namespace VerificationService
 {
     
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="VerificationService.IGmailVerify")]
     public interface IGmailVerify
     {
@@ -21,15 +21,21 @@ namespace VerificationService
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGmailVerify/SendMail", ReplyAction="http://tempuri.org/IGmailVerify/SendMailResponse")]
         System.Threading.Tasks.Task<string> SendMailAsync(string email, string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGmailVerify/SendModificationNotify", ReplyAction="http://tempuri.org/IGmailVerify/SendModificationNotifyResponse")]
+        bool SendModificationNotify(string email, string username, string project, string desc);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IGmailVerify/SendModificationNotify", ReplyAction="http://tempuri.org/IGmailVerify/SendModificationNotifyResponse")]
+        System.Threading.Tasks.Task<bool> SendModificationNotifyAsync(string email, string username, string project, string desc);
     }
     
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     public interface IGmailVerifyChannel : VerificationService.IGmailVerify, System.ServiceModel.IClientChannel
     {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.0.3")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.2.0-preview1.23462.5")]
     public partial class GmailVerifyClient : System.ServiceModel.ClientBase<VerificationService.IGmailVerify>, VerificationService.IGmailVerify
     {
         
@@ -83,14 +89,19 @@ namespace VerificationService
             return base.Channel.SendMailAsync(email, username);
         }
         
+        public bool SendModificationNotify(string email, string username, string project, string desc)
+        {
+            return base.Channel.SendModificationNotify(email, username, project, desc);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SendModificationNotifyAsync(string email, string username, string project, string desc)
+        {
+            return base.Channel.SendModificationNotifyAsync(email, username, project, desc);
+        }
+        
         public virtual System.Threading.Tasks.Task OpenAsync()
         {
             return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginOpen(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndOpen));
-        }
-        
-        public virtual System.Threading.Tasks.Task CloseAsync()
-        {
-            return System.Threading.Tasks.Task.Factory.FromAsync(((System.ServiceModel.ICommunicationObject)(this)).BeginClose(null, null), new System.Action<System.IAsyncResult>(((System.ServiceModel.ICommunicationObject)(this)).EndClose));
         }
         
         private static System.ServiceModel.Channels.Binding GetBindingForEndpoint(EndpointConfiguration endpointConfiguration)

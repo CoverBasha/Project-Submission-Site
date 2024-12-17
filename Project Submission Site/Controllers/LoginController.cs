@@ -17,7 +17,8 @@ namespace Project_Submission_Site.Controllers
 			_gmailClient = new GmailVerifyClient();
 		}
 
-        public IActionResult? IsLoggedIn()
+        [NonAction]
+        private IActionResult? IsLoggedIn()
         {
 			int? userid = HttpContext.Session.GetInt32("UserId");
 			if (userid != null && userid > 0)

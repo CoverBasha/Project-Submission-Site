@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationContext>(options =>
 {
-    options.UseSqlServer("Server=(LocalDb)\\MSSQLLocalDB;Database=ReusableProject;Trusted_Connection=True;TrustServerCertificate=True;");
+    options.UseSqlServer("Server=.\\SQLSERVER;Database=ReusableProject;Trusted_Connection=True;TrustServerCertificate=True;");
 });
 
 // Add sessions

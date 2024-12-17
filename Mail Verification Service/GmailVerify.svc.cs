@@ -63,5 +63,43 @@ namespace Mail_Verification_Service
 
 			return key;
 		}
+
+		public bool SendModificationNotify(string email, string username, string project, string desc)
+		{
+            try
+            {
+                var fromAddress = new MailAddress("projectsubmissionp@gmail.com", "Project Submission");
+                var toAddress = new MailAddress(email, username);
+                const string fromPassword = "xnhx rtag fmfr csga";
+                const string subject = "Project Modification Request";
+
+                string body = $"Dear {username},<br><br>A modification was requested for your project: <b>{project}</b>.<br><br>Modification description:<br>{desc}";
+
+                var smtp = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    DeliveryMethod = SmtpDeliveryMethod.Network,
+                    Credentials = new NetworkCredential(fromAddress.Address, fromPassword),
+                    Timeout = 20000
+                };
+
+                using (var message = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = true,
+                })
+                {
+                    smtp.Send(message);
+                }
+				return true;
+            }
+            catch (Exception ex)
+            {
+            }
+            return false;
+		}
     }
 }
