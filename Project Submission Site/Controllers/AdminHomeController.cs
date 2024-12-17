@@ -57,10 +57,24 @@ namespace Project_Submission_Site.Controllers
         {
             if (viewModel.Project.Id == 0)
             {
-                _context.Projects.Add(viewModel.Project);
+                var referee = _context.Referees.Include(r => r.Projects).SingleOrDefault(x => x.Id == viewModel.RefereeId);
+
+                if (referee != null)
+                {
+                    referee.Projects.Add(viewModel.Project);
+                    _context.SaveChanges();
+                }
             }
             else
             {
+                var referee = _context.Referees.Include(r => r.Projects).SingleOrDefault(x => x.Id == viewModel.RefereeId);
+
+                if (referee != null)
+                {
+                    referee.Projects.Add(viewModel.Project);
+                    _context.SaveChanges();
+                }
+
                 var newProject = _context.Projects.Single(p => p.Id == viewModel.Project.Id);
 
                 newProject.Name = viewModel.Project.Name;
